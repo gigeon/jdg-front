@@ -27,8 +27,8 @@ export default {
         session: getSessionFromStorage(),
     },
     getters: {
-        getUser: state => state.session?.user || null,
-        getMenuList: state => state.session?.menuList || [],
+        getUser: state => { return state.session?.user || null; },
+        getMenuList: state => state.session.session?.menuList || [],
         tokenRemainingSeconds: state => {
             const expire = state.session?.token?.accessTokenExpireDate;
             if (!expire) return 0;
@@ -50,6 +50,9 @@ export default {
             // 토큰 만료시간 계산
             const seconds = session?.token?.accessTokenExpireSeconds || 0;
             const expireDate = moment().add(seconds, "seconds").toISOString();
+            if (!session.token) {
+                session.token = {};  // token 객체가 없으면 빈 객체 생성
+            }
             session.token.accessTokenExpireDate = expireDate;
             commit("setSession", session);
         },

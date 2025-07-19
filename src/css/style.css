@@ -48,6 +48,7 @@
             color: #555;
         }
         
+        /* 입력 폼 */
         .input-form {
             width: 100%;
             padding: 14px 16px;
@@ -150,8 +151,4 @@
         
         .signup-link a:hover {
             text-decoration: underline;
-        }
-
-        .left-menu {
-            
         }

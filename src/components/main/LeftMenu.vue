@@ -1,37 +1,19 @@
 <template>
-    <div class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <div class="logo">
+    <div class="leftMenu">
+        <div class="leftMenu-header">
+            <div class="logo" @click="navigateToMain()">
                 <h1>MY MENU</h1>
             </div>
         </div>
         
-        <ul class="menu-list">
-            <div v-for="">
-                <li class="menu-item">
-                <a href="#" class="menu-link active">
-                    <svg class="menu-icon" viewBox="0 0 24 24">
-                        <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
-                    </svg>
-                    <span class="menu-text">대시보드</span>
-                </a>
-            </li>
+        <ul class="leftMenu-list">
+            <div v-for="item in menuList" :key="item">
+                <li class="leftMenu-item" @click="navigate(item)">
+                    <p href="#" :class="['leftMenu-link', { active: activeItem === item }]" >
+                        <span class="menu-text">{{ item.menuNm }}</span>
+                    </p>
+                </li>
             </div>
-            
-            
-            <!-- <li class="menu-item">
-                <a href="#" class="menu-link has-submenu" onclick="toggleSubmenu(this)">
-                    <svg class="menu-icon" viewBox="0 0 24 24">
-                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
-                    </svg>
-                    <span class="menu-text">콘텐츠 관리</span>
-                </a>
-                <div class="submenu">
-                    <a href="#" class="submenu-item">게시글 관리</a>
-                    <a href="#" class="submenu-item">댓글 관리</a>
-                    <a href="#" class="submenu-item">파일 관리</a>
-                </div>
-            </li> -->
             
             
         </ul>
@@ -39,8 +21,22 @@
 </template>
 
 <script>
-export default{
+import MENU_LIST from "@/js/menu/left-menu";
 
+export default{
+    data() {
+        return {
+            menuList: MENU_LIST,
+        }
+    },
+    methods: {
+        navigate(item) {
+            this.$router.push(item.path)
+        },
+        navigateToMain() {
+            this.$router.push("/systemMain")
+        }
+    }
 }
 
 </script>

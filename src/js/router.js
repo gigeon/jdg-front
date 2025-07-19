@@ -2,9 +2,10 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import systemLogin from "@/views/main/SystemLogin.vue";
 import systemMain from "@/views/main/SystemMain.vue";
+import userManage from "@/views/user/UserManage.vue";
 
-
-import sampleMenu from "@/js/menu/sample-menu.js";
+/* import sampleMenu from "@/js/menu/sample-menu.js"; */
+/* import leftMenu from "@/js/menu/left-menu.js"; */
 
 const routes = [
     {
@@ -16,23 +17,40 @@ const routes = [
         name: "systemMain",
         path: "/systemMain",
         component: systemMain,
+    },
+    {
+        name: "회원관리",
+        path: "/user/UserManage",
+        component: userManage,
     }
 ]
 
-function generateMenus(menuList) {
+/* function generateMenus(menuList) {
     menuList.forEach(menu => {
-        menu.items.forEach(item => {
-            routes.push({
-                path: item.path,
-                name: item.menuNm,
-                component: () => import(`@/views/sample/SampleGrid.vue`)
-            })
+        routes.push({
+            path: menu.path,
+            name: menu.menuNm,
+            component: import('@/views'+menu.path+'.vue'),
+        });
 
-        })
+        // 서브 메뉴 처리
+        if (menu.items && menu.items.length > 0) { // items가 있는지 확인
+            menu.items.forEach(item => {
+                routes.push({
+                    path: item.path,
+                    name: item.menuNm,
+                    component: () => {
+                        return import('@/views'+menu.path+'.vue');
+                    }
+                });
+            });
+        }
     });
-}
+    console.log(routes);
+} */
 
-generateMenus(sampleMenu)
+/* generateMenus(sampleMenu) */
+/* generateMenus(leftMenu) */
 
 const router = createRouter({
     history: createWebHistory(),

@@ -1,0 +1,96 @@
+/* 레프트메뉴바 */
+.leftMenu {
+    width: 250px;
+    height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    position: fixed;
+    left: 0;
+    top: 0;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    overflow-y: auto;
+}
+
+.leftMenu-header {
+    padding: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.logo h1 {
+    color: white;
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.leftMenu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.leftMenu-item {
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.leftMenu-link {
+    display: block;
+    padding: 15px 20px;
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.leftMenu-link:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    transform: translateX(5px);
+}
+
+.leftMenu-link.active {
+    background: rgba(255,255,255,0.2);
+    color: white;
+    border-left: 4px solid #fff;
+}
+
+.leftMenu-link.active::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.5), transparent);
+}
+
+.menu-text {
+    font-size: 16px;
+    font-weight: 500;
+    display: block;
+}
+
+.leftMenu-link:hover .menu-text {
+    transform: translateX(5px);
+    transition: transform 0.3s ease;
+}
+
+/* 스크롤바 스타일링 */
+.leftMenu::-webkit-scrollbar {
+    width: 6px;
+}
+
+.leftMenu::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.1);
+}
+
+.leftMenu::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.3);
+    border-radius: 3px;
+}
+
+.leftMenu::-webkit-scrollbar-thumb:hover {
+    background: rgba(255,255,255,0.5);
+}

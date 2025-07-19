@@ -61,11 +61,11 @@ export default{
                 this.param,
                 (result) => {
                     if(result.flag == 1) {
+                        this.$store.dispatch('session/saveSession', result);
                         this.$router.push('/systemMain')
                     } else {
                         alert("로그인 실패")
                     }
-                    
                 },
                 () => {
                     alert("로그인 실패")
