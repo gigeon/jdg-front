@@ -1,15 +1,15 @@
 <template>
-    <left-menu v-if="showMenu"/>
+    <!-- <left-menu v-if="showMenu"/> -->
     <router-view/>
 </template>
 
 <script>
-import leftMenu from '@/components/main/LeftMenu.vue'
+// import leftMenu from '@/components/main/LeftMenu.vue'
 import { computed } from "vue";
 import { useRoute } from "vue-router";
 export default{
     components: {
-      leftMenu
+      // leftMenu
     },
     setup() {
       const route = useRoute();

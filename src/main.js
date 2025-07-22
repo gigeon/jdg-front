@@ -1,4 +1,4 @@
-import { createApp } from 'vue';
+import { createApp, defineAsyncComponent } from 'vue';
 import App from './App.vue';
 import { createStore } from "vuex";
 import session from "./js/store/store-session";
@@ -8,6 +8,21 @@ import fetchApi from "@/js/fetchApi";
 
 import '@/css/style.css'
 import '@/css/base.css'
+
+const COMPONENTS = [
+  "InputForm", "ButtonForm", "BrButton", "TabulatorGrid"
+];
+
+function loadComponents(app) {
+  try {
+    for(let component of COMPONENTS) {
+      app.component(component, defineAsyncComponent(() =>
+        import(`@/components/${component}.vue`)));
+    }
+  } catch (error) {
+    console.log("loadEpComponents: Error=" + error);
+  }
+}
 
 const store = createStore({
   modules: {
@@ -20,5 +35,6 @@ const app = createApp(App)
 app.use(router)
 app.use(store);
 app.config.globalProperties.$fetchApi = fetchApi;
+loadComponents(app)
 
 app.mount('#app')
