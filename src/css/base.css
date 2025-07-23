@@ -77,6 +77,14 @@
     transition: transform 0.3s ease;
 }
 
+/* 컨테이너 */
+#container {
+    margin-left: 250px;
+    padding: 20px;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
 /* 스크롤바 스타일링 */
 .leftMenu::-webkit-scrollbar {
     width: 6px;

@@ -22,15 +22,20 @@ let routes = [
         children: mainRoutes,
     },
 ]
+console.log("222222")
+console.log(routes)
 
 function generateMenus(menuList) {
     menuList.forEach(menu => {
-        // require(`@/views${menu.path}.vue`);
-        mainRoutes.push({
-            path: menu.path,
-            name: menu.menuNm,
-            component: () => import(`@/views${menu.path}.vue`),
-        });
+        try{
+            mainRoutes.push({
+                path: menu.path,
+                name: menu.menuNm,
+                component: () => import(`@/views${menu.path}.vue`),
+            });
+        } catch {
+            console.log("임포트 에러")
+        }
 
         // 서브 메뉴 처리
         if (menu.items && menu.items.length > 0) { // items가 있는지 확인
@@ -43,6 +48,7 @@ function generateMenus(menuList) {
             });
         }
     });
+    console.log("123123")
 }
 
 const router = createRouter({

@@ -1,5 +1,10 @@
 <template>
     <left-menu />
+    <div id="container">
+        <router-view v-slot="{ Component }">
+            <component :is="Component" :key="$route.path" />
+        </router-view>
+    </div>
 </template>
 
 <script>

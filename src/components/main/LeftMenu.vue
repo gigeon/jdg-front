@@ -27,10 +27,12 @@ export default{
     data() {
         return {
             menuList: MENU_LIST,
+            activeItem: {},
         }
     },
     methods: {
         navigate(item) {
+            this.activeItem = item
             this.$router.push(item.path)
         },
         navigateToMain() {
