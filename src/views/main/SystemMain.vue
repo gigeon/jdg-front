@@ -1,10 +1,14 @@
 <template>
-    라우터 테스트
-    <button @click="check()">테스트</button>
+    <left-menu />
 </template>
 
 <script>
+import leftMenu from '@/components/main/LeftMenu.vue';
+
 export default{
+    components: {
+        leftMenu
+    },
     data() {
         return {
 

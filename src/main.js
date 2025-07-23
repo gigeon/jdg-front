@@ -23,12 +23,13 @@ function loadComponents(app) {
     console.log("loadEpComponents: Error=" + error);
   }
 }
-
 const store = createStore({
   modules: {
     session,
   },
 });
+
+export { store };
 
 const app = createApp(App)
 

@@ -27,8 +27,8 @@ export default {
         session: getSessionFromStorage(),
     },
     getters: {
-        getUser: state => { return state.session?.user || null; },
-        getMenuList: state => state.session.session?.menuList || [],
+        getUser(state) { return state.session?.user || null } ,
+        getMenuList: state => state.session?.menuList || [],
         tokenRemainingSeconds: state => {
             const expire = state.session?.token?.accessTokenExpireDate;
             if (!expire) return 0;

@@ -1,4 +1,5 @@
 <template>
+    <!-- 검색 조건 영역 -->
     <div class="search_box">
         <ul>
             <li>
