@@ -18,14 +18,6 @@
             <button type="button" @click="login" class="login-btn">로그인</button>
         </form>
         
-        <div class="forgot-password">
-            <a @click="flagChange(2)">비밀번호를 잊으셨나요?</a>
-        </div>
-        
-        <div class="divider">
-            <span>또는</span>
-        </div>
-        
         <div class="signup-link">
             계정이 없으신가요? <a @click="flagChange(1)">회원가입</a>
         </div>
@@ -52,26 +44,29 @@ export default{
             this.$emit('updateFlag', flag)
         },
         login() {
-            if(this.param.userId == "" || this.param.userId == null || this.param.userPswd == "" || this.param.userPswd == null ) {
-                alert("빈 칸에 값을 입력해주세요.")
-                return;
-            }
-            this.$fetchApi.write(
-                API.JOIN,
-                this.param,
-                (result) => {
-                    if(result.flag == 1) {
-                        this.$store.dispatch('session/saveSession', result);
-                        this.$router.push('/systemMain')
-                    } else {
-                        alert("로그인 실패")
-                    }
-                },
-                () => {
-                    alert("로그인 실패")
+            return new Promise((resolve, reject) => {
+                if(this.param.userId == "" || this.param.userId == null || this.param.userPswd == "" || this.param.userPswd == null ) {
+                    alert("빈 칸에 값을 입력해주세요.")
+                    return;
                 }
-
-            );
+                this.$fetchApi.write(
+                    API.JOIN,
+                    this.param,
+                    async (result) => {
+                        if(result.flag == 1) {
+                            await this.$store.dispatch('session/saveSession', result)
+                            this.$router.push('/user/UserManage')
+                            resolve();
+                        } else {
+                            alert("로그인 실패")
+                        }
+                    },
+                    () => {
+                        alert("로그인 실패")
+                        reject();
+                    }
+                );
+            })
         }
     }
 }
