@@ -15,6 +15,9 @@ const store = createStore({
   },
 });
 
+// store를 다른 파일에서 사용할 수 있도록 export
+export { store };
+
 const app = createApp(App)
 
 app.use(router)

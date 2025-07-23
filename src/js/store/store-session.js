@@ -27,7 +27,10 @@ export default {
         session: getSessionFromStorage(),
     },
     getters: {
-        getUser: state => { return state.session?.user || null; },
+        getUser: state => { 
+            console.log('현재 세션 상태:', state.session);
+            return state.session?.user || null; 
+        },
         getMenuList: state => state.session.session?.menuList || [],
         tokenRemainingSeconds: state => {
             const expire = state.session?.token?.accessTokenExpireDate;
