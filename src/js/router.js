@@ -2,55 +2,50 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import systemLogin from "@/views/main/SystemLogin.vue";
 import systemMain from "@/views/main/SystemMain.vue";
-import userManage from "@/views/user/UserManage.vue";
 
-/* import sampleMenu from "@/js/menu/sample-menu.js"; */
-/* import leftMenu from "@/js/menu/left-menu.js"; */
+import leftMenu from "@/js/menu/left-menu.js";
 
-const routes = [
+// store 인스턴스를 import (storeSession 모듈이 아닌 실제 store 인스턴스)
+import { store } from "@/main.js"
+
+let mainRoutes = [];
+generateMenus(leftMenu)
+let routes = [
     {
         name: "login",
         path: "/login",
         component: systemLogin,
     },
     {
-        name: "systemMain",
-        path: "/systemMain",
+        name: "main",
+        path: "/",
         component: systemMain,
+        children: mainRoutes,
     },
-    {
-        name: "회원관리",
-        path: "/user/UserManage",
-        component: userManage,
-    }
 ]
 
-/* function generateMenus(menuList) {
+function generateMenus(menuList) {
     menuList.forEach(menu => {
-        routes.push({
+        // require(`@/views${menu.path}.vue`);
+        mainRoutes.push({
             path: menu.path,
             name: menu.menuNm,
-            component: import('@/views'+menu.path+'.vue'),
+            component: () => import(`@/views${menu.path}.vue`),
         });
 
         // 서브 메뉴 처리
         if (menu.items && menu.items.length > 0) { // items가 있는지 확인
             menu.items.forEach(item => {
-                routes.push({
+                mainRoutes.push({
                     path: item.path,
                     name: item.menuNm,
-                    component: () => {
-                        return import('@/views'+menu.path+'.vue');
-                    }
+                    component: () => import(`@/views${item.path}.vue`),
                 });
             });
         }
     });
-    console.log(routes);
-} */
-
-/* generateMenus(sampleMenu) */
-/* generateMenus(leftMenu) */
+    console.log(mainRoutes);
+}
 
 const router = createRouter({
     history: createWebHistory(),
@@ -58,18 +53,15 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-    // 예: 로그인 되어있는지 확인
-    //   const isLoggedIn = !!localStorage.getItem('token'); // 또는 store에 저장된 로그인 상태
-
-    // if (to.path !== '/login' && !isLoggedIn) {
-        //     next('/login'); // 로그인 안 한 상태에서 로그인 외 페이지 접근 시
-        // } else {
-            //     next(); /
-    if (to.path == "/") {
-        next('/login'); // /login이 아닌 경우에만 이동
+    // 올바른 store getter 접근 방법
+    const user = store.getters['session/getUser'];
+    console.log('Router beforeEach - 현재 사용자:', user);
+    
+    if( !user && to.path !== '/login' ) {
+        next('/login');
     } else {
-        next(); // /login일 땐 그대로 진행
-    }
+        next();
+    } 
 })
 
 export default router
