@@ -44,4 +44,14 @@ export default{
             .then((res) => onSuccess?.(res.data))
             .catch((err) => onFail?.(err));
     },
+    post: function(path, param, onSuccess, onFail) {
+        checkSession();
+        axiosInstance
+            .post("/api" + path, param, {
+                ...HEADER_JSON(),
+                withCredentials: true,
+            })
+            .then((res) => onSuccess?.(res.data))
+            .catch((err) => onFail?.(err));
+    },
 }

@@ -153,7 +153,6 @@ export default {
             this.$emit('cellEdited', cell);
         });
         this.$emit('update:grid', this.tabulator);
-        this.setExcelBtn();
         this.addEvent();
     },
     methods: {

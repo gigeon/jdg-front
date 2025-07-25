@@ -9,12 +9,14 @@
             <label for="email">아이디</label>
             <input class="input-form" type="text" v-model="param.userId" placeholder="아이디를 입력하세요" required @keydown.enter.prevent="login()">
         </div>
-        
         <div class="form-group">
             <label for="password">비밀번호</label>
             <input class="input-form" type="password" v-model="param.userPswd" placeholder="비밀번호를 입력하세요" required @keydown.enter.prevent="login()">
         </div>
-        
+        <div class="form-group">
+            <label for="password">OTP 번호</label>
+            <input class="input-form" type="text" v-model="param.userOtp" placeholder="OTP를 입력하세요" required @keydown.enter.prevent="login()">
+        </div>
         <button type="button" @click="login" class="login-btn">로그인</button>
     </form>
     
