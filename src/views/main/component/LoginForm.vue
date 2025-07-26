@@ -57,10 +57,11 @@ export default{
                     async (result) => {
                         if(result.flag == 1) {
                             await this.$store.dispatch('session/saveSession', result)
-                            this.$router.push('/user/UserManage')
+                            this.$router.push('/home')
                             resolve();
                         } else {
-                            alert("로그인 실패")
+                            alert("로그인 실패");
+                            reject();
                         }
                     },
                     () => {

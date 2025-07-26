@@ -173,3 +173,59 @@ body {
 .signup-link a:hover {
     text-decoration: underline;
 }
+
+/* web cli 디자인 */
+.terminal {
+    height: 100vh;
+    padding: 20px;
+    overflow-y: auto;
+    line-height: 1.4;
+    font-size: 14px;
+}
+
+.output {
+    white-space: pre-wrap;
+    margin-bottom: 0;
+}
+
+.prompt-line {
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+.prompt {
+    color: #000000;
+    margin-right: 4px;
+    user-select: none;
+}
+
+.command-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #000000;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+}
+
+.cursor {
+    display: inline-block;
+    width: 8px;
+    height: 16px;
+    background: #000000;
+    margin-left: 2px;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+.log-entry {
+    margin: 0;
+    font-size: 14px;
+    color: #000000;
+}

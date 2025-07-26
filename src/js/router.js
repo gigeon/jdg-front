@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import systemLogin from "@/views/main/SystemLogin.vue";
 import systemMain from "@/views/main/SystemMain.vue";
+import systemHome from "@/views/main/SystemHome.vue";
+import connectedWeb from "@/views/main/ConnectedWeb.vue";
 
 import leftMenu from "@/js/menu/left-menu.js";
 
@@ -21,9 +23,17 @@ let routes = [
         component: systemMain,
         children: mainRoutes,
     },
+    {
+        name: "home",
+        path: "/home",
+        component: systemHome,
+    },
+    {
+        name: "con",
+        path: "/con",
+        component: connectedWeb,
+    }
 ]
-console.log("222222")
-console.log(routes)
 
 function generateMenus(menuList) {
     menuList.forEach(menu => {
@@ -48,7 +58,6 @@ function generateMenus(menuList) {
             });
         }
     });
-    console.log("123123")
 }
 
 const router = createRouter({
