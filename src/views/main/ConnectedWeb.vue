@@ -1,12 +1,14 @@
 <template>
+    <div class="btn_area">
+        <button-form label="닫기"/>
+    </div>
     <div class="terminal">
         <div class="output" id="output">
             {{ resultText }}
-            Connected successfully.
         </div>
         <div class="prompt-line">
             <span class="prompt">$</span>
-                <input type="text" class="command-input" id="commandInput" autofocus v-model="param.inputText" @keydown.enter.prevent="pushCli()">
+            <input type="text" class="command-input" id="commandInput" autofocus v-model="param.inputText" @keydown.enter.prevent="pushCli()">
             <span class="cursor"></span>
         </div>
     </div>
@@ -22,24 +24,35 @@ export default{
                 inputText: "",
                 db: "",
             },
-            resultText: "$ webdb connect postgresql://localhost:5432/mydb \
-                        Connecting to database...",
+            resultText: "",
         }
     },
     mounted() {
         this.param.db = "JEV";
+        this.resultText = `$ Connecting to ${this.param.db}...`;
+        // if(true) {
+        //     this.resultText = this.resultText + "\n Connected successfully.";
+        // }
     },
     methods: {
         pushCli() {
+            if(this.param.inputText == "exit") {
+                this.$router.push("/home")
+                return;
+            }
+
+            this.resultText += "\n$ " + this.param.inputText;
+            console.log(this.resultText)
             this.$fetchApi.post(
                 API.CONN,
                 this.param,
                 (result) => {
-                    console.log(result)
-                    console.log("123123")
+                    this.param.inputText = "";
+                    this.resultText += "\n$ " + result.result;
                 },
                 () => {
-                    alert("전송 실패")
+                    alert("DB 연결 실패")
+                    this.param.inputText = "";
                 }
             );
         }

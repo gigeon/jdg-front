@@ -108,6 +108,7 @@ export default {
                 },
             },
             ajaxResponse: (apiUrl, params, response) => {
+                console.log(response.result)
                 this.response = [];
                 response.result.forEach((ele) => {
                     ele.__key__ = uuidv4();

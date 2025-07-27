@@ -12,7 +12,7 @@ import '@/css/style.css'
 import '@/css/base.css'
 
 const COMPONENTS = [
-  "InputForm", "ButtonForm", "BrButton", "TabulatorGrid"
+  "InputForm", "ButtonForm", "TabulatorGrid"
 ];
 
 function loadComponents(app) {

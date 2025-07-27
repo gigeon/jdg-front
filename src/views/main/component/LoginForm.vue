@@ -46,30 +46,25 @@ export default{
             this.$emit('updateFlag', flag)
         },
         login() {
-            return new Promise((resolve, reject) => {
-                if(this.param.userId == "" || this.param.userId == null || this.param.userPswd == "" || this.param.userPswd == null ) {
-                    alert("빈 칸에 값을 입력해주세요.")
-                    return;
-                }
-                this.$fetchApi.write(
-                    API.JOIN,
-                    this.param,
-                    async (result) => {
-                        if(result.flag == 1) {
-                            await this.$store.dispatch('session/saveSession', result)
-                            this.$router.push('/home')
-                            resolve();
-                        } else {
-                            alert("로그인 실패");
-                            reject();
-                        }
-                    },
-                    () => {
-                        alert("로그인 실패")
-                        reject();
+            if(this.param.userId == "" || this.param.userId == null || this.param.userPswd == "" || this.param.userPswd == null ) {
+                alert("빈 칸에 값을 입력해주세요.")
+                return;
+            }
+            this.$fetchApi.write(
+                API.JOIN,
+                this.param,
+                async (result) => {
+                    if(result.flag == 1) {
+                        await this.$store.dispatch('session/saveSession', result)
+                        this.$router.push('/home')
+                    } else {
+                        alert("로그인 실패");
                     }
-                );
-            })
+                },
+                () => {
+                    alert("로그인 실패")
+                }
+            );
         }
     }
 }

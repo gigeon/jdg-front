@@ -2,17 +2,17 @@ const MENU_LIST = [
     {
         menuNm: "회원관리",
         path: "/user/UserManage",
-        items: []
+        items: [],
     },
     {
         menuNm: "권한관리",
-        path: "/RoleManage",
-        items: []
+        path: "/auth/AuthManage",
+        items: [],
     },
     {
         menuNm: "엑세스관리",
-        path: "/AccessManage",
-        items: []
+        path: "/accs/AccsManage",
+        items: [],
     },
 ]
 

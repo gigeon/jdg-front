@@ -2,7 +2,7 @@
     <div class="leftMenu">
         <div class="leftMenu-header">
             <div class="logo" @click="navigateToMain()">
-                <h1>MY MENU</h1>
+                <h1>DB보안 <br>게이트웨이시스템</h1>
             </div>
         </div>
         
