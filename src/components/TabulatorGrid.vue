@@ -1,17 +1,17 @@
 <template>
     <div
-        class="btn_area mt0"
+        class="btn_area mt0 right"
         style="display: flex; justify-content: space-between; align-items: center"
         v-if="rowButton.length > 0 || dataTreeColumn != null"
     >
         <div>
-            <br-button
+            <button-form
                 label="행 펼치기"
                 v-if="dataTreeColumn != null"
                 format="tertiary sm"
                 @click="treeExpand(tabulator.getRows())"
             />
-            <br-button
+            <button-form
                 label="행 접기"
                 v-if="dataTreeColumn != null"
                 format="tertiary sm"
@@ -19,34 +19,29 @@
             />
         </div>
         <div>
-            <br-button
-                class="right"
+            <button-form
+                format="right tertiary sm"
                 label="행 추가"
                 icon="add"
                 v-if="rowButton[0] == 'C'"
-                format="tertiary"
-                size="sm"
                 @click="addRow()"
             />
-            <br-button
-                class="right"
+            <button-form
+                format="right primary sm"
                 label="저장"
                 v-if="rowButton[1] == 'S'"
-                format="primary sm"
                 @click="$emit('save')"
             />
-            <br-button
-                class="right"
+            <button-form
+                format="right secondary sm"
                 label="삭제"
                 v-if="rowButton[2] == 'D'"
-                format="secondary sm"
                 @click="deleteRow()"
             />
-            <br-button
-                class="right"
+            <button-form
+                format="right tertiary sm"
                 label="엑셀다운로드"
                 v-if="excelFlag == true"
-                format="tertiary sm"
                 @click="getExcel()"
             />
         </div>

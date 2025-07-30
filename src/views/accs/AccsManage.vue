@@ -26,6 +26,7 @@
                 :rowButton="accsGridRowButton"
                 :param="param"
                 v-model:grid="accsGridObject"
+                :row-clicked="showSafePopup()"
             />
         </div>
     </div>
@@ -73,6 +74,9 @@ export default{
         search() {
             this.accsGridObject.replaceData();
         },
+        showSafePopup() {
+            
+        }
     },
     
 }

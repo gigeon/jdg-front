@@ -36,7 +36,7 @@ export default{
             this.$router.push(item.path)
         },
         navigateToMain() {
-            this.$router.push("/systemMain")
+            this.$router.push("/home")
         }
     }
 }

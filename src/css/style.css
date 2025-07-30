@@ -84,11 +84,32 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .button-form:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(66, 133, 244, 0.3);
+}
+
+.button-form.sm {
+    min-width: 25px;
+    height: 20px;
+    border-radius: 4px;
+    font-size: 8px;
+    padding: 12px;
+}
+.button-form.primary {
+    background:rgb(48, 114, 236);
+}
+.button-form.secondary {
+    background:rgb(236, 48, 48);
+}
+.button-form.tertiary {
+    height: 18px;
+    background:rgb(255, 255, 255);
+    border: solid #000 1px;
+    color: #000;
 }
 
 .login-btn {

@@ -2,12 +2,12 @@
     <div class="search_box">
         <ul>
             <li>
-                <label for="search2">회원명</label>
-                <input-form type="text" id="search2" v-model="userNm"/>
+                <label for="search2">권한명</label>
+                <input-form type="text" id="search2" v-model="authNm"/>
             </li>
             <li>
-                <label for="search2">권한명</label>
-                <input-form type="text" id="search2" v-model="userAuthCd"/>
+                <label for="search2">등록일</label>
+                <input-form type="text" id="search2" v-model="crtDt"/>
             </li>
         </ul>
     </div>
@@ -45,7 +45,7 @@ export default{
             },
             authGridApiUrl: API.AUTH,
             authGridColumns: [],
-            authGridRowButton: ['', 'S', 'D'],
+            authGridRowButton: ['C', 'S', 'D'],
             authGridObject: "",
         }
     },
@@ -58,8 +58,8 @@ export default{
     methods: {
         setAuthGridColumns() {
             this.authGridColumns = [
-                {title: "권한명", field: "authNm"},
-                {title: "설명", field: "authCn"},
+                this.$gridEditor.editInput({title: "권한명", field: "authNm"}),
+                this.$gridEditor.editInput({title: "설명", field: "authCn"}),
                 {title: "DDL여부", field: "ddlYn"},
                 {title: "CRUD", hozAlign:"center", columns: [
                     {title: "조회여부", field: "sYn"},
