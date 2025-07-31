@@ -62,8 +62,19 @@ export default{
                 {title: "이름", field: "userNm"},
                 {title: "권한", field: "userAuthCd"},
                 {title: "가입일자", field: "regDt"},
+                { title: "접속", field: "aprvYn", formatter: () => {
+                        return "<button class='button-form sm'>상세</button>";
+                    },
+                    cellClick: (e, cell) => {
+                        const rowData = cell.getRow().getData();
+                        this.navigateToDTL(rowData);
+                    }
+                },
             ]
         },
+        navigateToDTL(rowData) {
+            this.$router.push({path: "/user/userDetail", query: rowData})
+        }
     },
     
 }

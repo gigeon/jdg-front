@@ -80,7 +80,7 @@
 /* 컨테이너 */
 #container {
     width: 100%;
-    margin-left: 230px;
+    margin-left: 250px;
     padding: 20px;
     min-height: 100vh;
     box-sizing: border-box;
@@ -303,4 +303,42 @@
 
 .popup_content::-webkit-scrollbar-thumb:hover {
     background: #a1a1a6;
+}
+
+/* info_Box */
+.content {
+    padding: 0;
+    width: 100%;
+}
+
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 0;
+}
+
+.info-table th,
+.info-table td {
+    padding: 16px 24px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.info-table th {
+    background: #f8fafc;
+    font-weight: 600;
+    color: #475569;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    width: 200px;
+}
+
+.info-table td {
+    color: #1e293b;
+    font-size: 15px;
+}
+
+.info-table tr:hover {
+    background: #f8fafc;
 }
